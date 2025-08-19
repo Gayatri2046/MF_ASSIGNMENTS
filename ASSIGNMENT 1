@@ -1,0 +1,143 @@
+/*Write a program to implement set operations to manage membership in school clubs. A school has two clubs: the Drama Club and the Science Club.
+Set A={students in the Drama Club}     ,         Set B={students in the Science Club}
+Perform following tasks :
+● Find Students in at least one club.
+● Find Students in both clubs.
+● Find students in the Drama Club but not in the Science Club.   Find Students in the Science Club but not in the Drama Club.
+● If a student is not a member of any club*/
+
+#include <iostream>
+#include <string>
+using namespace std;
+int main() {
+    string student[8];          // All students
+    string dramaclub[4];        // Drama Club members
+    string scienceclub[4];      // Science Club members
+    string unionstudents[8];    // Students in at least one club
+    string intersection[4];     // Students in both clubs
+    string onlyDrama[4];        // Students only in Drama club but not in science club
+    string onlyScience[4];      // Students only in Science club but not in drama club
+    string neither[8];          // Students is not member of any club
+    int k = 0, l = 0, d = 0, s = 0, n = 0;
+    // Input all 8 students
+    cout << "Enter names of 8 students:\n";
+    for (int i = 0; i < 8; i++) {
+        cin >> student[i];
+    }
+    // Input Drama Club members
+    cout << "Enter 4 drama club members:\n";
+    for (int i = 0; i < 4; i++) {
+        cin >> dramaclub[i];
+    }
+    // Input Science Club members
+    cout << "Enter 4 science club members:\n";
+    for (int i = 0; i < 4; i++) {
+        cin >> scienceclub[i];
+    }
+    // Display input
+    cout << "\nuniversal set(All students):\n";
+    for (int i = 0; i < 8; i++) {
+        cout << student[i] << " ";
+    }
+    cout << "\nDrama club:\n";
+    for (int i = 0; i < 4; i++) {
+        cout << dramaclub[i] << " ";
+    }
+    cout << "\nScience club:\n";
+    for (int i = 0; i < 4; i++) {
+        cout << scienceclub[i] << " ";
+    }
+    cout << "\n";
+    // Union (at least one club)
+    for (int i = 0; i < 4; i++) {
+        unionstudents[k++] = dramaclub[i];
+    }
+    for (int i = 0; i < 4; i++) {
+        bool found = false;
+        for (int j = 0; j < k; j++) {
+            if (scienceclub[i] == unionstudents[j]) {
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            unionstudents[k++] = scienceclub[i];
+        }
+    }
+    // Intersection (both clubs)
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++) {
+            if (dramaclub[i] == scienceclub[j]) {
+                intersection[l++] = dramaclub[i];
+                break;
+            }
+        }
+    }
+    // Students only in Drama club but not in science club (Drama - Science)
+    for (int i = 0; i < 4; i++) {
+        bool found = false;
+        for (int j = 0; j < 4; j++) {
+            if (dramaclub[i] == scienceclub[j]) {
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            onlyDrama[d++] = dramaclub[i];
+        }
+    }
+    //Students only in Science club but not in drama club
+    for (int i = 0; i < 4; i++) {
+        bool found = false;
+        for (int j = 0; j < 4; j++) {
+            if (scienceclub[i] == dramaclub[j]) {
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            onlyScience[s++] = scienceclub[i];
+        }
+    }
+    // Students is not member of any club
+    for (int i = 0; i < 8; i++) {
+        bool inClub = false;
+        for (int j = 0; j < k; j++) {
+            if (student[i] == unionstudents[j]) {
+                inClub = true;
+                break;
+            }
+        }
+        if (!inClub) {
+            neither[n++] = student[i];
+        }
+    }
+    // Output results
+    cout << "\nStudents in at least one club:\t\n";
+    for (int i = 0; i < k; i++) {
+        cout << unionstudents[i] << "  ";
+    }
+    cout << "\n";
+    cout << "\nStudents in both clubs:\t\n";
+    for (int i = 0; i < l; i++) {
+        cout << intersection[i] << "  ";
+    }
+    cout << "\n";
+    cout << "\nStudents only in Drama Club  but not in Science club:\t\n";
+    for (int i = 0; i < d; i++) {
+        cout << onlyDrama[i] << "  ";
+    }
+    cout << "\n";
+    cout << "\nStudents only in Science club but not in drama club:\t\n";
+    for (int i = 0; i < s; i++) {
+        cout << onlyScience[i] << "  ";
+    }
+    cout << "\n";
+    cout << "\nStudents is not member of any club:\t\n";
+    for (int i = 0; i < n; i++) {
+        cout << neither[i] << "  ";
+    }
+    cout << "\n";
+    cout << endl;
+    return 0;
+}
