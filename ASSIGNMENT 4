@@ -1,0 +1,24 @@
+/*A school has selected a group of 20 students for a debate competition. The task is to determine
+the number of different teams of 3 students that can be formed from this group. This involves
+calculating combinations, where the order of selection does not matter.*/
+
+#include<iostream>
+using namespace std;
+int main(){
+    int n=20; //selected students for debate competition
+    int r=3;   //team of 3 students
+    int factorial = 1;
+    int c;
+    cout<<"No. of students in group of debate competition: "<<n<<endl;
+    cout<<"No. of students selected to form different teams: "<<r<<endl;
+    int ways= 1;
+        for(int i=0;i<r;i++){
+        ways *=(n-i);
+    }
+    for(int i=1;i<=r;i++){
+        factorial *=i;
+        }
+    c= ways/factorial; //NO. OF WAYS FOR SELECTION OF 3 STUDENTS
+    cout<<"No.of groups formed of 3 different students :"<<c<<endl;    
+    return 0;
+    }
