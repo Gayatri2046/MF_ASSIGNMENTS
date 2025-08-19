@@ -1,0 +1,23 @@
+#include<iostream>
+using namespace std;
+int main(){
+    int total_students =200;  //  total no. of students 
+    int sports_club=120;     // no. of students in sports club
+    int music_club=90;     //no. of students in music club
+    int intersection=50;      //common students in both clubs
+    int unionclubs =sports_club + music_club - intersection ;  //no. of students in atleast one club
+    int onlymusic= music_club-intersection;    //no.of students only member of music club
+    int onlysports = sports_club - intersection;   //no. of students only member of sports club
+    int neithersize= total_students - unionclubs;     //no.of students who are member of neither of two clubs
+     
+     cout<<"\n no. of students in atleast one club: ";
+     cout<< unionclubs <<" " ;
+     cout<<"\n no. of students only member of sports club:";
+     cout<< onlysports <<" ";
+     cout<<"\n no.of students only member of music club: ";
+     cout<< onlymusic <<" ";
+     cout<<"\n no.of students who are member of neither of two clubs: ";
+     cout<< neithersize <<" ";
+        return 0 ;
+    }
+
