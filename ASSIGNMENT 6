@@ -1,0 +1,67 @@
+/*A teacher wants to analyze the performance of students in a recent examination. To understand
+the overall class achievement and identify trends in student performance, the teacher needs to
+calculate the measures of central tendency specifically, the mean, mode, and median from the
+student score data.*/
+
+#include<iostream>
+using namespace std;
+int main(){
+	int n;
+	cout<<"Enter no. of students :";
+	cin>>n;
+	int marks[n];
+	for(int i=0;i<n;i++){
+		cout<<"\n enter marks of students:"<<i+1<<":";
+		cin>>marks[i];
+		}
+	int mode = marks[0];
+	int max_count=0;
+	//mean
+            float sum=0;
+	for(int i=0;i<n;i++){
+		sum = sum+marks[i];
+		}
+	float mean = sum/n;
+	cout<<"\nmean of marks is:"<<mean<<endl;
+	//mode
+	for(int i=0;i<n;i++){
+		int count = 0;
+		for(int j=0;j<n;j++){
+			if(marks[j]==marks[i]){
+				count++;
+				}
+			if(count>max_count){
+				max_count=count;
+				mode = marks[i];
+				}}}
+           if(max_count==1){
+cout<<”\nNo mode\n”;
+}else{
+cout<<”\nMode:”<<mode<<”(it appears”<<max_count<<”times)”<<endl;
+}
+
+	//median
+	//sorted array
+	for(int i=0;i<n;i++){
+		for(int j=0;j<n;j++){
+			if(marks[j]>marks[j+1]){
+				int temp = marks[j];
+				marks[j]=marks[j+1];
+				marks[j+1] = temp;
+				}
+			}
+		}
+		cout<<"\nsorted marks of students:";
+		for(int i=0;i<n;i++){
+		cout<<marks[i]<<” “;
+		}
+	cout<<endl;
+		if(n%2!=0){
+		float median = marks[n/2];
+		cout<<"\nmedian of marks is : "<<median;}
+	else{
+	median = (marks[n/2-1]+marks[n/2])/2;
+	cout<<"\nmedian of marks is : "<<median;
+		}
+	return 0;
+	}
