@@ -1,0 +1,47 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main(){
+    int n=8;
+    int A[8] = {6,8,7,5,6,9,7,8};
+    float r ;//r=range
+    float v;//v=variance
+    float sd;//standard deviation
+    float cov;//coe. of variance
+    float sum = 0;
+     
+     for(int i=0;i<n;i++){
+         for(int j=0;j<n;j++){
+             if(A[j]>A[j+1]){
+                 int temp = A[j];
+                 A[j] = A[j+1];
+                 A[j+1] = temp;
+                 } 
+             }
+         }
+         cout<<"\nsorted array elements:";
+        for(int i=0;i<n;i++){
+        cout<<A[i]<<" ";    }
+         cout<<"\n";
+     for(int i=0;i<n;i++){
+         sum +=A[i];   }
+     float mean = sum/n;
+     cout<<"Mean: "<< mean;
+     cout<<"\n";
+         r = A[n-1] - A[0];
+         cout<<"Range: " <<r<<"\n";
+         float add=0;
+    for(int i=0;i<n;i++){
+        add +=((A[i]-mean)*(A[i]-mean));         
+        }
+        v = (add/n);
+        cout<<"variance:"<<v<<"\n";
+        
+        sd = sqrt(v);
+        cout<<"Standard Deviation:"<< sd<<"\n";
+        
+        cov = (sd/mean)*100;
+        cout<<"cof. of variance :"<<cov<<"\n";
+        return 0;
+    }
